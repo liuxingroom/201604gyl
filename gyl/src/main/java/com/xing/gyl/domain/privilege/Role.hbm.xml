@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+		class代表持久化类
+		   name持久化类的全名
+		   table 持久化类对应的表名  默认类名
+		   catalog 数据库的名字  一般不写
+	 -->
+	<class name="com.xing.gyl.domain.privilege.Role">
+		<!-- 
+			主键
+			   name为属性的名称
+			   type为类型
+			   length指的是数据库中相应的字段的长度
+			   column为对应的列的名称   可以不写，默认就是属性的名称
+		 -->
+		<id name="rid" length="5" type="java.lang.Long">
+			<generator class="increment"></generator>
+		</id>
+		
+		<property name="name" type="string" length="20"></property>
+		<property name="pid" type="java.lang.Long" length="5"></property>
+		<property name="isParent" type="java.lang.Boolean"></property>
+		<!-- 一个角色可以包含多个用户 -->
+		<set name="users" table="user_role">	
+			<key>
+				<column name="rid"></column>
+			</key>
+			<many-to-many class="com.xing.gyl.domain.basedata.User" column="uid"></many-to-many>
+		</set>
+		
+		<!-- 一个角色可以包含多个权限 -->
+		<set name="privileges" table="role_privilege">
+			<key>
+				<column name="rid"></column>
+			</key>
+			<many-to-many class="com.xing.gyl.domain.privilege.Privilege" column="id"></many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

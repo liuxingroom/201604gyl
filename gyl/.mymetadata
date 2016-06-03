@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="gyl"
+  id="myeclipse.1463362247005"
+  context-root="/gyl"
+  j2ee-spec="6.0"
+  archive="gyl.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

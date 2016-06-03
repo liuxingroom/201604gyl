@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name></display-name>	
+  	
+	
+  	<!-- 配置sprig配置文件的路径 -->
+   <context-param>
+   	  <param-name>contextConfigLocation</param-name>
+   	  <param-value>classpath:com/xing/gyl/spring/applicationContext.xml</param-value>
+   </context-param>
+  	<listener>
+	  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+  	<!-- 
+		添加spring解决hibernate懒加载的问题，过滤器 该过滤器一定要放置到struts2过滤器的前面
+		原理：延迟了Session的关闭时间，在页面上关闭
+	-->
+  	<filter>
+  		<filter-name>openSessionInViewFilter</filter-name>
+  		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+  		<filter-name>openSessionInViewFilter</filter-name>
+  		<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  
+  <!-- struts2拦截器 -->
+  <filter>
+  	<filter-name>struts2</filter-name>
+  	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>struts2</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

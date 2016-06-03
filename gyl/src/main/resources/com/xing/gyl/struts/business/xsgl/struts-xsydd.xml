@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="xsydd" namespace="/" extends="struts-default">
+		<action name="xsyddAction_*" method="{1}" class="com.xing.gyl.business.xsgl.action.XsyddAction">
+			<result name="xsyddList">/WEB-INF/jsp/gyl/business/xsgl/xsydd/list.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/gyl/business/xsgl/xsydd/add.jsp</result>
+			<result name="chain" type="chain">
+				<param name="actionName">xsyddAction</param>
+				<param name="method">showXsydd</param>
+			</result>
+		</action>
+	</package>
+</struts>
+	

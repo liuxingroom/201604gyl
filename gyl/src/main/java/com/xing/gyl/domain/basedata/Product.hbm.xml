@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.xing.gyl.domain.basedata.Product">
+		<id name="pid" length="5">
+			<generator class="increment"></generator>
+		</id>
+		<!-- 
+			编码
+		 -->
+		<property name="spbm" length="20"></property>
+		<!-- 
+			单位
+		 -->
+		<property name="dw" length="50"></property>
+		<property name="spmc" length="100"></property>
+		<property name="xh" length="100"></property>
+		<property name="shulv"></property>
+	</class>
+</hibernate-mapping>
+	

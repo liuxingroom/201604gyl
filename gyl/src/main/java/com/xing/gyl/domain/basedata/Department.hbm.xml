@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 
+		class代表持久化类
+		   name持久化类的全名
+		   table 持久化类对应的表名  默认类名
+		   catalog 数据库的名字  一般不写
+	 -->
+	<class name="com.xing.gyl.domain.basedata.Department">
+		<!-- 
+			主键
+			   name为属性的名称
+			   type为类型
+			   length指的是数据库中相应的字段的长度
+			   column为对应的列的名称   可以不写，默认就是属性的名称
+		 -->
+		<id name="did" length="5" type="long">
+			<generator class="increment"></generator>
+		</id>
+		<property name="name" length="20" type="string"></property>
+		<property name="description" length="50" type="string"></property>
+		
+		<set name="users" inverse="true" cascade="delete">
+			<key>
+				<column name="did"></column>
+			</key>
+			<one-to-many class="com.xing.gyl.domain.basedata.User"/>
+		</set>
+	</class>
+</hibernate-mapping>

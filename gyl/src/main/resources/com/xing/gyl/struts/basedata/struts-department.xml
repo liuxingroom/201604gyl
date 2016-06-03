@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="department" namespace="/" extends="interceptor">
+		<action name="departmentAction_*" class="departmentAction" method="{1}">
+			<result name="listAction">/WEB-INF/jsp/gyl/basedata/department/list.jsp</result>
+			<result name="action2action" type="redirectAction">departmentAction_showPageResult.action</result>
+			<result name="addUI">/WEB-INF/jsp/gyl/basedata/department/add.jsp</result>
+			<result name="updateUI">/WEB-INF/jsp/gyl/basedata/department/update.jsp</result>
+			<result name="chain" type="chain">
+				<param name="actionName">departmentAction</param>
+  				<param name="method">showPageResult</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>
+	
